@@ -116,23 +116,89 @@ hr {
 
 /*#region | Music |*/
 
-.latest-song-name {
+.music-title {
     color: rgba(255, 255, 255, 0.65);
     text-align: center;
     font-size: 50px;
-    transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
-    margin: 5px auto;
+    transition: color 0.25s ease, transform 0.25s ease;
+    margin: 5px auto 30px;
     display: table;
+    letter-spacing: -1px;
 }
 
-.latest-song-name:hover {
+.music-title:hover {
     color: white;
     transform: translateY(-1px);
-    text-shadow: #fbfdff -1px 1px 1px;
 }
 
-.latest-song-cover {
+.song-cover {
+    width: 360px;
+    height: 360px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
+.song-cover:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+}
+
+.image-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.image-row h1 {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin: 0;
+    text-align: center;
+}
+
+.image-row p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 17px;
+    margin: 0;
+    text-align: center;
+}
+
+.profile-cover {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-cover:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+}
+
+.profile-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+}
+
+.profile-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-item p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 17px;
+    margin: 0;
+    text-align: center;
 }
 
 /*#endregion*/
