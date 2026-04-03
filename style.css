@@ -271,18 +271,29 @@ hr {
 /*#region | Mobile |*/
 
 @media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
     .toolbar {
-        position: relative;
+        position: fixed;
         top: 0;
         left: 0;
+        right: 0;
         flex-wrap: wrap;
-        padding: 12px;
+        padding: 10px 12px;
         gap: 2px;
         justify-content: center;
+        background-color: rgb(28, 28, 28);
+        z-index: 100;
     }
 
     .toolbar-divider {
         display: none;
+    }
+
+    hr {
+        width: 92%;
     }
 
     .home-title {
