@@ -9,6 +9,7 @@ hr {
     border-top: 1px solid #ccc;
     width: 99%;
     margin: 7px auto;
+    margin-top: 5px;
 }
 
 /*#region | Toolbar |*/
@@ -289,10 +290,6 @@ hr {
     }
 
     .toolbar-divider {
-        display: none;
-    }
-
-    br {
         display: none;
     }
 
