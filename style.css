@@ -272,7 +272,7 @@ hr {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 70px;
+        padding-top: 0;
     }
 
     .toolbar {
@@ -294,6 +294,7 @@ hr {
 
     hr {
         width: 92%;
+        margin-top: 70px;
     }
 
     .home-title {
