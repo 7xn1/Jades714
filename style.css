@@ -1,27 +1,66 @@
+:root {
+    --bg: #0d101d;
+    --bg-card: #161b30;
+    --bg-card-hover: #1e2540;
+    --blue-deep: #232d55;
+    --blue-mid: #3a4a8c;
+    --blue-light: #8393d6;
+    --blue-glow: #4f63b0;
+    --text-primary: #e9ecf9;
+    --text-muted: rgba(210, 217, 245, 0.55);
+    --border: rgba(131, 147, 214, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: rgb(28, 28, 28);
+    background-color: var(--bg);
+    background-image:
+            radial-gradient(ellipse at 20% 0%, rgba(58, 74, 140, 0.35), transparent 55%),
+            radial-gradient(ellipse at 80% 15%, rgba(79, 99, 176, 0.2), transparent 50%);
+    background-attachment: fixed;
     margin: 0;
+    overflow-x: hidden;
 }
 
 hr {
     border: none;
-    border-top: 1px solid #ccc;
-
+    border-top: 1px solid var(--border);
     width: 99%;
-
     margin: 7px auto;
+}
+
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /*#region | Toolbar |*/
 
+.toolbar-spacer {
+    height: 90px;
+}
+
 .toolbar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
     display: flex;
     align-items: center;
     gap: 4px;
+    padding: 16px 20px;
+    background: rgba(13, 16, 29, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    row-gap: 8px;
 }
 
 .toolbar-icon {
@@ -30,6 +69,7 @@ hr {
     border-radius: 50%;
     overflow: hidden;
     flex-shrink: 0;
+    box-shadow: 0 0 0 1px var(--border);
 }
 
 .toolbar-icon img {
@@ -42,13 +82,20 @@ hr {
     width: 1px;
     height: 40px;
     margin: 0 10px;
-    background: white;
+    background: var(--blue-mid);
     flex-shrink: 0;
+}
+
+.toolbar-links {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
 }
 
 .tb-label {
     padding: 6px 10px;
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-muted);
     font-size: 13px;
     cursor: pointer;
     transition: color 0.15s ease, transform 0.50s ease;
@@ -65,14 +112,14 @@ hr {
     left: 10px;
     width: calc(100% - 20px);
     height: 1px;
-    background: white;
+    background: var(--blue-light);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.25s ease;
 }
 
 .tb-label:hover {
-    color: white;
+    color: var(--text-primary);
     transform: translateY(-1px);
 }
 
@@ -85,100 +132,150 @@ hr {
 /*#region | Home |*/
 
 .home-title {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-muted);
     text-align: center;
     font-size: 50px;
     transition: color 0.25s ease, transform 0.25s ease;
-    margin: 5px auto;
+    margin: 40px auto 5px;
     display: table;
 }
 
 .home-title:hover {
-    color: white;
+    color: var(--text-primary);
     transform: translateY(-1px);
 }
 
 .home-description {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-muted);
     text-align: center;
-
     transition: color 0.25s ease, transform 0.25s ease;
     display: table;
-    margin: 10px auto;
+    margin: 10px auto 50px;
 }
 
 .home-description:hover {
-    color: white;
+    color: var(--text-primary);
     transform: translateY(-1px);
 }
 
 .home-most-popular {
-    color: rgba(255, 255, 255, 1);
-    width: 50%;
+    color: var(--text-primary);
+    width: 100%;
+    max-width: 680px;
     height: auto;
-    background-color: #1a1919;
-    margin: 0 auto;
+    background: linear-gradient(180deg, var(--bg-card), #11152580);
+    margin: 0 auto 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 20px;
-    gap: 15px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+    gap: 22px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(131, 147, 214, 0.08);
 }
 
 .home-most-popular h1 {
-    color: rgba(255, 255, 255, 1);
-    font-size: 35px;
+    color: var(--text-primary);
+    font-size: 26px;
     text-align: center;
-    margin-bottom: 10px;
+    margin: 0;
+    letter-spacing: -0.3px;
 }
 
 .popular-tracks {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 14px;
     width: 100%;
     justify-content: center;
 }
 
 .popular-track-card {
-    background-color: #242323;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 15px;
-    width: 250px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    width: 155px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     text-decoration: none;
-    color: white;
-    transition: background-color 0.2s;
+    color: var(--text-primary);
+    position: relative;
+    transition: background-color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-
 .popular-track-card:hover {
-    background-color: #2e2d2d;
+    background-color: var(--bg-card-hover);
+    border-color: var(--blue-light);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(58, 74, 140, 0.35);
+}
+
+.popular-track-card .track-rank {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(13, 16, 29, 0.75);
+    border: 1px solid var(--blue-light);
+    color: var(--blue-light);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.popular-track-card .cover-wrap {
+    width: 100%;
+    position: relative;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.popular-track-card .cover-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(13, 16, 29, 0.65));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.popular-track-card:hover .cover-wrap::after {
+    opacity: 1;
 }
 
 .popular-track-card img {
     width: 100%;
-    border-radius: 6px;
+    display: block;
     aspect-ratio: 1;
     object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.popular-track-card:hover img {
+    transform: scale(1.05);
 }
 
 .popular-track-card .track-title {
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
+    line-height: 1.3;
 }
 
 .popular-track-card .track-artist {
     font-size: 11px;
-    color: rgba(255,255,255,0.5);
+    color: var(--text-muted);
 }
 
 /*#endregion*/
@@ -186,31 +283,33 @@ hr {
 /*#region | Music |*/
 
 .music-title {
-    color: rgba(255, 255, 255, 0.65);
+    color: var(--text-muted);
     text-align: center;
-    font-size: 50px;
+    font-size: 42px;
     transition: color 0.25s ease, transform 0.25s ease;
-    margin: 5px auto 30px;
+    margin: 50px auto 30px;
     display: table;
     letter-spacing: -1px;
 }
 
 .music-title:hover {
-    color: white;
+    color: var(--text-primary);
     transform: translateY(-1px);
 }
 
 .song-cover {
-    width: 360px;
-    height: 360px;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 1;
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
 }
 
 .song-cover:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 48px rgba(58, 74, 140, 0.5);
 }
 
 .image-row {
@@ -218,10 +317,12 @@ hr {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    margin-bottom: 60px;
+    padding: 0 20px;
 }
 
 .image-row h1 {
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--text-primary);
     font-size: 32px;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -230,30 +331,35 @@ hr {
 }
 
 .image-row p {
-    color: rgba(255, 255, 255, 0.4);
+    color: var(--text-muted);
     font-size: 17px;
     margin: 0;
     text-align: center;
 }
 
 .profile-cover {
-    width: 280px;
-    height: 280px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    object-fit: cover;
+    border: 2px solid var(--border);
 }
 
 .profile-cover:hover {
     transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 20px 48px rgba(58, 74, 140, 0.5);
 }
 
 .profile-row {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 48px;
+    gap: 40px 32px;
+    margin-bottom: 60px;
+    padding: 0 20px;
 }
 
 .profile-item {
@@ -264,10 +370,92 @@ hr {
 }
 
 .profile-item p {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 17px;
+    color: var(--text-muted);
+    font-size: 15px;
     margin: 0;
     text-align: center;
+}
+
+/*#endregion*/
+
+/*#region | Mobile |*/
+
+@media (max-width: 640px) {
+    .toolbar {
+        gap: 2px;
+    }
+
+    .toolbar-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .toolbar-divider {
+        height: 30px;
+        margin: 0 6px;
+    }
+
+    .tb-label {
+        font-size: 12px;
+        padding: 5px 7px;
+    }
+
+    .toolbar-spacer {
+        height: 110px;
+    }
+
+    .home-title,
+    .music-title {
+        font-size: 34px;
+    }
+
+    .home-description {
+        font-size: 14px;
+        padding: 0 20px;
+    }
+
+    .home-most-popular {
+        padding: 20px 16px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+    }
+
+    .home-most-popular h1 {
+        font-size: 21px;
+    }
+
+    .popular-track-card {
+        width: 122px;
+        padding: 10px;
+    }
+
+    .profile-cover {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-row {
+        gap: 28px 20px;
+    }
+
+    .song-cover {
+        max-width: 280px;
+    }
+
+    .image-row h1 {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 380px) {
+    .toolbar-icon {
+        display: none;
+    }
+
+    .popular-track-card {
+        width: 98px;
+    }
 }
 
 /*#endregion*/
